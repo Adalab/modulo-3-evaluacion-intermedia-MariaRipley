@@ -1,15 +1,23 @@
 import "../styles/main.scss";
-import data from "../data/data.json";
 import { useState } from "react";
+import { useEffect } from "react";
 
 function App() {
-  const [quoteList, setQuoteList] = useState(data);
+  const [quoteList, setQuoteList] = useState([]);
 
-  console.log(quoteList);
+  useEffect(() => {
+    fetch(
+      "https://beta.adalab.es/curso-intensivo-fullstack-recursos/apis/quotes-friends-tv-v1/quotes.json"
+    )
+      .then((response) => response.json())
+      .then((data) => {
+        setQuoteList(data);
+      });
+  }, []);
 
   const renderQuoteList = () => {
     return quoteList.map((eachQuote, index) => (
-      <li>
+      <li key={index}>
         <p>
           {eachQuote.quote}
           <span>{eachQuote.character}</span>
