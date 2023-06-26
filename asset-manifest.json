@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/modulo-3-evaluacion-intermedia-MariaRipley/static/css/main.90f6920e.css",
+    "main.js": "/modulo-3-evaluacion-intermedia-MariaRipley/static/js/main.0a8b03f4.js",
+    "index.html": "/modulo-3-evaluacion-intermedia-MariaRipley/index.html",
+    "main.90f6920e.css.map": "/modulo-3-evaluacion-intermedia-MariaRipley/static/css/main.90f6920e.css.map",
+    "main.0a8b03f4.js.map": "/modulo-3-evaluacion-intermedia-MariaRipley/static/js/main.0a8b03f4.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.90f6920e.css",
+    "static/js/main.0a8b03f4.js"
+  ]
+}
