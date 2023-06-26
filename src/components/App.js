@@ -7,6 +7,8 @@ function App() {
 
   const [quoteSearch, setQuoteSearch] = useState("");
 
+  const [characterFilter, setCharacterFilter] = useState("");
+
   useEffect(() => {
     fetch(
       "https://beta.adalab.es/curso-intensivo-fullstack-recursos/apis/quotes-friends-tv-v1/quotes.json"
@@ -21,9 +23,19 @@ function App() {
     setQuoteSearch(ev.target.value);
   };
 
+  const handleCharacterFilter = (ev) => {
+    ev.preventDefault();
+    setCharacterFilter(ev.target.value);
+  };
+
   const renderQuoteList = () => {
-    const filteredList = quoteList.filter((eachQuote) =>
-      eachQuote.quote.toLowerCase().includes(quoteSearch.toLowerCase())
+    const filteredList = quoteList.filter(
+      (eachQuote) =>
+        (characterFilter === "" ||
+          eachQuote.character.toLowerCase() ===
+            characterFilter.toLowerCase()) &&
+        eachQuote.quote.toLowerCase().includes(quoteSearch.toLowerCase()) &&
+        eachQuote.quote.toLowerCase().includes(quoteSearch.toLowerCase())
     );
 
     return filteredList.map((eachQuote, index) => (
@@ -51,14 +63,19 @@ function App() {
               onInput={handleQuoteSearch}
             />
             <label htmlFor="characterFilter">Filtrar por personaje</label>
-            <select name="" id="">
+            <select
+              name=""
+              id=""
+              onChange={handleCharacterFilter}
+              value={characterFilter}
+            >
               <option value="">Todos</option>
-              <option value="">Ross</option>
-              <option value="">Monica</option>
-              <option value="">Joey</option>
-              <option value="">Phoebe</option>
-              <option value="">Chandler</option>
-              <option value="">Rachel</option>
+              <option value="Ross">Ross</option>
+              <option value="Monica">Monica</option>
+              <option value="Joey">Joey</option>
+              <option value="Phoebe">Phoebe</option>
+              <option value="Chandler">Chandler</option>
+              <option value="Rachel">Rachel</option>
             </select>
           </form>
         </section>
