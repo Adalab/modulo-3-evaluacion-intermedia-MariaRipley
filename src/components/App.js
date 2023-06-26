@@ -5,6 +5,8 @@ import { useEffect } from "react";
 function App() {
   const [quoteList, setQuoteList] = useState([]);
 
+  const [quoteSearch, setQuoteSearch] = useState("");
+
   useEffect(() => {
     fetch(
       "https://beta.adalab.es/curso-intensivo-fullstack-recursos/apis/quotes-friends-tv-v1/quotes.json"
@@ -15,8 +17,16 @@ function App() {
       });
   }, []);
 
+  const handleQuoteSearch = (ev) => {
+    setQuoteSearch(ev.target.value);
+  };
+
   const renderQuoteList = () => {
-    return quoteList.map((eachQuote, index) => (
+    const filteredList = quoteList.filter((eachQuote) =>
+      eachQuote.quote.toLowerCase().includes(quoteSearch.toLowerCase())
+    );
+
+    return filteredList.map((eachQuote, index) => (
       <li key={index}>
         <p>
           {eachQuote.quote}
@@ -35,7 +45,11 @@ function App() {
         <section>
           <form action="">
             <label htmlFor="quoteFilter">Filtrar por frase</label>
-            <input type="text" />
+            <input
+              type="search"
+              value={quoteSearch}
+              onInput={handleQuoteSearch}
+            />
             <label htmlFor="characterFilter">Filtrar por personaje</label>
             <select name="" id="">
               <option value="">Todos</option>
