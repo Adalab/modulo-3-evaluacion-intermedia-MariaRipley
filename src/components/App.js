@@ -1,6 +1,23 @@
 import "../styles/main.scss";
+import data from "../data/data.json";
+import { useState } from "react";
 
 function App() {
+  const [quoteList, setQuoteList] = useState(data);
+
+  console.log(quoteList);
+
+  const renderQuoteList = () => {
+    return quoteList.map((eachQuote, index) => (
+      <li>
+        <p>
+          {eachQuote.quote}
+          <span>{eachQuote.character}</span>
+        </p>
+      </li>
+    ));
+  };
+
   return (
     <>
       <header>
@@ -24,7 +41,7 @@ function App() {
           </form>
         </section>
         <section>
-          <ul></ul>
+          <ul>{renderQuoteList()}</ul>
         </section>
       </main>
     </>
