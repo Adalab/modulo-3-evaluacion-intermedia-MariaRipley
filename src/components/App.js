@@ -9,6 +9,11 @@ function App() {
 
   const [characterFilter, setCharacterFilter] = useState("");
 
+  const [newQuote, setNewQuote] = useState({
+    quote: "",
+    character: "",
+  });
+
   useEffect(() => {
     fetch(
       "https://beta.adalab.es/curso-intensivo-fullstack-recursos/apis/quotes-friends-tv-v1/quotes.json"
@@ -18,6 +23,22 @@ function App() {
         setQuoteList(data);
       });
   }, []);
+
+  const handleNewInput = (ev) => {
+    const clonedNewQuote = { ...newQuote };
+
+    if (ev.target.id === "quote") {
+      clonedNewQuote.quote = ev.target.value;
+    } else if (ev.target.id === "character") {
+      clonedNewQuote.character = ev.target.value;
+    }
+
+    setNewQuote();
+  };
+
+  const handleClickAdd = (ev) => {
+    ev.preventDefault();
+  };
 
   const handleQuoteSearch = (ev) => {
     setQuoteSearch(ev.target.value);
@@ -81,6 +102,34 @@ function App() {
         </section>
         <section>
           <ul>{renderQuoteList()}</ul>
+        </section>
+        <section>
+          <form action="">
+            <fieldset>
+              Añadir una nueva frase
+              <label htmlFor="">Frase</label>
+              <input
+                type="text"
+                value={newQuote.quote}
+                onInput={handleNewInput}
+              />
+              <label htmlFor="">Personaje</label>
+              <input
+                type="text"
+                value={newQuote.character}
+                onInput={handleNewInput}
+                id="quote"
+                name="quote"
+              />
+            </fieldset>
+            <input
+              type="submit"
+              value="Añadir una nueva frase"
+              onClick={handleClickAdd}
+              id="character"
+              name="character"
+            />
+          </form>
         </section>
       </main>
     </>
