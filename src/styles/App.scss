@@ -1,0 +1,48 @@
+.header {
+    
+    &__title {
+        font-family: sans-serif;
+        font-size: 2rem;
+        text-align: center;
+        padding-top: 20px;
+        padding-bottom: 20px;
+    }
+}
+
+.main {
+    padding: 20px;
+    &__form {
+        
+        &--form {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+    }
+    &__list {
+        font-family: sans-serif;
+        
+    }
+}
+
+.label {
+    font-family: sans-serif;
+
+}
+
+.input {
+    border: 1px solid greenyellow;
+    font-family: sans-serif;
+    margin-bottom: 30px;
+}
+
+.liElement {
+    border: 1px solid greenyellow;
+    margin: 10px 0;
+    padding: 5px;
+}
+
+.character {
+    font-weight: bold;
+    color: palevioletred;
+}

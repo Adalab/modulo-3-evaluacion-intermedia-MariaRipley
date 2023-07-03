@@ -39,10 +39,10 @@ function App() {
     );
 
     return filteredList.map((eachQuote, index) => (
-      <li key={index}>
+      <li key={index} className="liElement">
         <p>
           {eachQuote.quote}
-          <span>{eachQuote.character}</span>
+          <span className="character">{eachQuote.character}</span>
         </p>
       </li>
     ));
@@ -50,21 +50,27 @@ function App() {
 
   return (
     <>
-      <header>
-        <h1>Frases de Friends</h1>
+      <header className="header">
+        <h1 className="header__title">Frases de Friends</h1>
       </header>
-      <main>
-        <section>
-          <form action="">
-            <label htmlFor="quoteFilter">Filtrar por frase</label>
+      <main className="main">
+        <section className="main__form">
+          <form className="main__form--form" action="">
+            <label className="label" htmlFor="quoteFilter">
+              Filtrar por frase
+            </label>
             <input
+              className="input"
               id="quoteFilter"
               type="search"
               value={quoteSearch}
               onInput={handleQuoteSearch}
             />
-            <label htmlFor="characterFilter">Filtrar por personaje</label>
+            <label className="label" htmlFor="characterFilter">
+              Filtrar por personaje
+            </label>
             <select
+              className="input"
               name=""
               id="characterFilter"
               onChange={handleCharacterFilter}
@@ -80,7 +86,7 @@ function App() {
             </select>
           </form>
         </section>
-        <section>
+        <section className="main__list">
           <ul>{renderQuoteList()}</ul>
         </section>
       </main>
