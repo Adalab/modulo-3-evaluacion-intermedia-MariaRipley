@@ -58,6 +58,7 @@ function App() {
           <form action="">
             <label htmlFor="quoteFilter">Filtrar por frase</label>
             <input
+              id="quoteFilter"
               type="search"
               value={quoteSearch}
               onInput={handleQuoteSearch}
@@ -65,7 +66,7 @@ function App() {
             <label htmlFor="characterFilter">Filtrar por personaje</label>
             <select
               name=""
-              id=""
+              id="characterFilter"
               onChange={handleCharacterFilter}
               value={characterFilter}
             >
